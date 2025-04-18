@@ -4,6 +4,9 @@ use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomepageController;
 
+
+
+//kode baru diubah menjadi seperti ini
 Route::get('/', [HomepageController::class, 'index']);
 Route::get('products', [HomepageController::class, 'products']);
 Route::get('product/{slug}', [HomepageController::class, 'product']);
