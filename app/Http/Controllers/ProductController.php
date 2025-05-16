@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product; // Gunakan Product, bukan Products
+use App\Models\Product; 
 use App\Models\Categories;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,7 +17,6 @@ class ProductController extends Controller
     {
     $q = $request->q;
 
-        // Mengambil produk dan memuat relasi kategori
         $products = Product::with('category')
                         ->where('name', 'like', '%' . $q . '%')
                         ->orWhere('description', 'like', '%' . $q . '%')
@@ -54,7 +53,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi input
+
         $validated = $request->validate([
             'product_category_id' => 'nullable|exists:product_categories,id',
             'name' => 'required|string|max:255',
@@ -64,8 +63,7 @@ class ProductController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        // Membuat produk baru
-        $product = new Product; // Gunakan Product, bukan Products
+        $product = new Product; 
         $product->product_category_id = $request->product_category_id;
         $product->name = $request->name;
         $product->description = $request->description;
@@ -91,7 +89,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // Validasi input
+        
         $validated = $request->validate([
             'product_category_id' => 'nullable|exists:product_categories,id',
             'name' => 'required|string|max:255',
@@ -101,7 +99,7 @@ class ProductController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $product = Product::find($id); // Gunakan Product, bukan Products
+        $product = Product::find($id);
         $product->product_category_id = $request->product_category_id;
         $product->name = $request->name;
         $product->description = $request->description;
@@ -127,7 +125,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        $product = Product::find($id); // Gunakan Product, bukan Products
+        $product = Product::find($id); 
 
         $product->delete();
 

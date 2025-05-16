@@ -15,8 +15,7 @@
         @csrf
 
         <flux:input label="Name" name="name" class="mb-3" />
-
-        <!-- Pindahkan kategori ke bawah Name -->
+        
         <div class="mb-3">
             <label for="product_category_id" class="block text-sm font-medium text-gray-700 mb-1">
                 Category

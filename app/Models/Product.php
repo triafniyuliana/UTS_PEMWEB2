@@ -13,7 +13,6 @@ class Product extends Model
 
     protected $table = 'products';
 
-        // Definisikan relasi belongsTo dengan Category
     public function category()
     {
         return $this->belongsTo(Categories::class, 'product_category_id');

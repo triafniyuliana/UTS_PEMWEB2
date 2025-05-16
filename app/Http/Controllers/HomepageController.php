@@ -20,7 +20,7 @@ class HomepageController extends Controller
 
     public function products()
     {
-        $products = Product::paginate(10); // Bisa juga pakai ->all() jika belum pakai pagination
+        $products = Product::paginate(10); 
         $title = "Products";
 
         return view('web.products', [
