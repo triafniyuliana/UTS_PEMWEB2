@@ -81,7 +81,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->back()
+        return redirect()->route('products.index')
             ->with('successMessage', 'Product Berhasil Disimpan');
     }
 
@@ -117,7 +117,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->back()
+        return redirect()->route('products.index')
             ->with('successMessage', 'Product Berhasil Diperbarui');
     }
 
@@ -131,7 +131,7 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->back()
+        return redirect()->route('products.index')
             ->with('successMessage', 'Data Berhasil Dihapus');
     }
 }
