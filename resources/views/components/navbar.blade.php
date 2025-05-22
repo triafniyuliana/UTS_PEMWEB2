@@ -20,7 +20,9 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/category/pria">Pria</a></li>
                             <li><a class="dropdown-item" href="/category/wanita">Wanita</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="/category/anak-anak">Anak-Anak</a></li>
                         </ul>
                     </li>
@@ -29,7 +31,43 @@
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
+
+                @if(auth()->guard('customer')->check())
+                <div class="dropdown">
+                    <a class="btn btn-outline-secondary dropdown-toggle"
+                        href="#" role="button" id="userDropdown" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        {{ Auth::guard('customer')->user()->name }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item"
+                                href="#">Dashboard</a></li>
+                        <li>
+                            <form method="POST" action="{{
+route('customer.logout') }}">
+                                @csrf
+                                <button class="dropdown-item"
+                                    type="submit">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                @else
+                <a class="btn btn-outline-primary me-2" href="{{
+route('customer.login') }}">Login</a>
+                <a class="btn btn-primary" href="{{
+route('customer.register') }}">Register</a>
+                @endif
             </div>
         </div>
     </nav>
- </div>
+</div>
+
+
+
+
+</div>
+</div>
+</nav>
+</div>
